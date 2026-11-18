@@ -1,0 +1,1879 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#123F87">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="48x48" href="favicon-48.png">
+<link rel="icon" type="image/png" sizes="192x192" href="favicon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<title>Build Your CV — MUSTAWY CV</title>
+<meta name="description" content="Free CV builder for MUST students. Fill in your details, pick a font and accent color, and download a clean, professional CV for internship applications.">
+<meta name="keywords" content="MUSTAWY CV, MUSTAWY, MUST CV builder, CV builder, resume builder, MUST university, internship CV">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://mohammedmohyi.github.io/Mustawy-CV/build.html">
+<meta property="og:url" content="https://mohammedmohyi.github.io/Mustawy-CV/build.html">
+<meta property="og:site_name" content="MUSTAWY CV">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "MUSTAWY CV", "url": "https://mohammedmohyi.github.io/Mustawy-CV/build.html", "description": "Free CV builder for MUST students. Fill in your details, pick a font and accent color, and download a clean, professional CV for internship applications.", "applicationCategory": "BusinessApplication", "operatingSystem": "Any (web browser)", "inLanguage": "en", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}}</script>
+<meta property="og:type" content="website">
+<meta property="og:title" content="MUSTAWY CV">
+<meta property="og:description" content="Free CV builder for MUST students. Build and download a professional CV in minutes.">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="MUSTAWY CV">
+<meta name="twitter:description" content="Free CV builder for MUST students. Build and download a professional CV in minutes.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700;800&family=Lora:wght@400;500;600;700&family=Merriweather:wght@400;700&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+
+  :root{
+    --paper:#FFFFFF;
+    --paper2:#EAF1FB;
+    --ink:#0F2347;
+    --ink-soft:#5D6E88;
+    --blue:#123F87;          /* logo navy */
+    --blue-dark:#0B2A5C;
+    --blue-wash:#E4EEFC;     /* logo page-fold tint */
+    --blue-deep:#081E45;
+    --green:#0BA047;         /* logo green */
+    --green-dark:#087F37;
+    --green-wash:#E3F4EA;
+    --line:#D3DFF2;
+  }
+  *{box-sizing:border-box;}
+  html,body{height:100%;}
+  html{scroll-behavior:smooth;}
+  body{margin:0;background:#EAF1FB;}
+  .builder-view{
+    --panelbg:var(--paper2);
+    --muted:var(--ink-soft);
+    --accent:var(--blue);
+    --m-accent:var(--blue);
+    --paper:#ffffff;
+    font-family:'Inter',sans-serif;
+    background:var(--panelbg);
+    color:var(--ink);
+    min-height:100vh;
+  }
+  .builder-view *{box-sizing:border-box;}
+  .app{
+    display:grid;
+    grid-template-columns: var(--form-w, 420px) 1fr;
+    height:100vh;
+    overflow:hidden;
+    background-color:#EEF2F8;
+  }
+  /* ---------------- INTERACTIVE BACKGROUND ---------------- */
+  #bgfx{position:fixed;left:0;top:0;width:100vw;height:100vh;z-index:0;pointer-events:none;display:block;}
+  .form-panel,.preview-panel{position:relative;z-index:1;}
+  #bgShuffle{
+    position:fixed;right:18px;bottom:18px;z-index:5;
+    width:40px;height:40px;border-radius:50%;
+    border:1.5px solid var(--line);background:#fff;color:var(--blue);
+    display:grid;place-items:center;cursor:pointer;padding:0;
+    box-shadow:0 6px 16px -8px rgba(18,63,135,.55);
+    transition:background .15s ease,color .15s ease,transform .15s ease;
+  }
+  #bgShuffle:hover{background:var(--blue);color:#fff;transform:rotate(180deg);}
+  @media (max-width:900px){#bgShuffle{display:none;}}
+  @media print{#bgfx,#bgShuffle{display:none !important;}}
+  /* ---------------- FORM PANEL ---------------- */
+  .form-panel{
+    background:#fff;
+    border-right:1px solid var(--line);
+    border-top:6px solid var(--blue);
+    padding:26px 26px 0 26px;
+    height:100%;
+    min-height:0;
+    display:flex;
+    flex-direction:column;
+  }
+  .form-scroll{
+    overflow-y:auto;
+    min-height:0;
+    flex:1 1 auto;
+    padding-bottom:22px;
+  }
+  .brand{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin:0 0 6px 0;
+  }
+  .brand-mark{flex:none;display:block;height:52px;width:auto;}
+  .form-panel h1 .brand-accent{color:var(--green);}
+  .form-panel h1{
+    font-family:'Space Grotesk',sans-serif;
+    font-size:23px;
+    font-weight:700;
+    letter-spacing:.02em;
+    color:var(--blue);
+    margin:0;
+  }
+  .form-panel .sub{
+    font-size:12.5px;
+    color:var(--muted);
+    margin:0 0 24px 0;
+    line-height:1.55;
+  }
+  .section-block{
+    margin-bottom:22px;
+    padding-bottom:18px;
+    border-bottom:1px solid var(--line);
+  }
+  .section-block h2{
+    font-family:'Space Grotesk',sans-serif;
+    font-size:13px;
+    font-weight:700;
+    letter-spacing:.02em;
+    margin:0 0 10px 0;
+    color:var(--blue);
+    display:flex;
+    align-items:center;
+    gap:8px;
+  }
+  .section-block h2::before{
+    content:'';
+    flex:none;
+    width:16px;
+    height:5px;
+    border-radius:3px;
+    background:var(--green);
+  }
+  label{
+    display:block;
+    font-size:11.5px;
+    color:var(--muted);
+    margin:8px 0 3px 0;
+  }
+  input[type=text], textarea{
+    width:100%;
+    font-family:inherit;
+    font-size:13px;
+    padding:8px 10px;
+    border:1.5px solid var(--line);
+    border-radius:7px;
+    background:#fff;
+    color:var(--ink);
+    resize:vertical;
+    transition:border-color .15s ease;
+  }
+  input[type=text]:focus, textarea:focus{
+    outline:none;
+    border-color:var(--blue);
+    box-shadow:0 0 0 3px rgba(18,63,135,.12);
+  }
+  textarea{min-height:56px;line-height:1.4;}
+  .entry-card{
+    border:1.5px solid var(--line);
+    border-radius:10px;
+    padding:12px 12px 6px 12px;
+    margin-bottom:10px;
+    background:var(--panelbg);
+    position:relative;
+  }
+  .entry-card .remove-btn{
+    position:absolute;
+    top:8px; right:8px;
+    background:none;
+    border:none;
+    color:#A34E3C;
+    font-size:11.5px;
+    cursor:pointer;
+  }
+  .add-btn{
+    display:inline-block;
+    margin-top:4px;
+    padding:7px 14px;
+    font-size:12px;
+    font-weight:600;
+    background:var(--blue-dark);
+    color:#fff;
+    border:none;
+    border-radius:20px;
+    cursor:pointer;
+  }
+  .add-btn:hover{opacity:.88;}
+  .row2{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+  .actions{
+    flex:none;
+    background:#fff;
+    padding:14px 0 22px 0;
+    border-top:1px solid var(--line);
+  }
+  .primary-btn{
+    width:100%;
+    padding:13px;
+    font-size:13.5px;
+    font-weight:700;
+    letter-spacing:.01em;
+    background:var(--blue);
+    color:#fff;
+    border:none;
+    border-radius:24px;
+    cursor:pointer;
+    box-shadow:0 3px 0 var(--green);
+  }
+  .primary-btn:hover{background:var(--blue-dark);}
+  .secondary-download-btn{
+    width:100%;
+    padding:12px;
+    font-size:13.5px;
+    font-weight:600;
+    letter-spacing:.01em;
+    background:#fff;
+    color:var(--blue);
+    border:1.5px solid var(--blue);
+    border-radius:24px;
+    cursor:pointer;
+    margin-top:10px;
+    transition:background .15s ease, color .15s ease;
+  }
+  .secondary-download-btn:hover{background:var(--blue);color:#fff;}
+  .hint{font-size:11.5px;color:var(--muted);margin-top:8px;line-height:1.55;}
+
+  /* ---------------- PREVIEW PANEL ---------------- */
+  .preview-panel{
+    padding:40px;
+    height:100%;
+    min-height:0;
+    display:flex;
+    justify-content:center;
+    align-items:flex-start;
+    overflow-y:auto;
+    background:transparent;
+  }
+  .cv{
+    flex:none;
+    width:816px;
+    height:auto;
+    min-height:1056px;
+    background:var(--paper);
+    box-shadow:0 18px 40px -18px rgba(18,63,135,.40), 0 2px 8px rgba(18,63,135,.10);
+    color:var(--ink);
+  }
+  .placeholder{color:#8593AB;font-style:italic;}
+
+  /* ---------------- LEFT-ALIGNED TEMPLATE ---------------- */
+  .cv.leftdoc{
+    font-family:var(--cv-body-font,'Helvetica Neue',Arial,sans-serif);
+    padding:52px 58px;
+    color:#262626;
+  }
+  .cv.leftdoc .ld-name{
+    font-family:var(--cv-heading-font,Georgia,'Times New Roman',serif);
+    font-size:27px;
+    font-weight:700;
+    letter-spacing:.02em;
+    color:#1a1a1a;
+    margin:0;
+    text-align:center;
+  }
+  .cv.leftdoc .ld-title{
+    text-align:center;
+    font-size:11.5px;
+    letter-spacing:.05em;
+    text-transform:uppercase;
+    color:var(--cv-accent,#000000);
+    margin:8px 0 0 0;
+  }
+  .cv.leftdoc .ld-contact{
+    font-size:11px;
+    color:#4a4a4a;
+    margin:8px 0 0 0;
+    text-align:center;
+  }
+  .cv.leftdoc .ld-sep{color:#777;}
+  .cv.leftdoc .ld-rule{height:2px;background:#1a1a1a;margin:16px 0 22px;}
+  .cv.leftdoc .ld-section{margin-bottom:20px;}
+  .cv.leftdoc .ld-h2{
+    font-size:12.5px;
+    font-weight:700;
+    letter-spacing:.06em;
+    text-transform:uppercase;
+    color:#1a1a1a;
+    margin:0 0 9px 0;
+  }
+  .cv.leftdoc .ld-body-text{font-size:12.6px;line-height:1.65;color:#3a3a3a;}
+  .cv.leftdoc .ld-entry{margin-bottom:13px;}
+  .cv.leftdoc .ld-entry:last-child{margin-bottom:0;}
+  .cv.leftdoc .ld-row{display:flex;justify-content:space-between;align-items:baseline;gap:14px;}
+  .cv.leftdoc .ld-row .left{font-weight:700;font-size:13.3px;color:#1a1a1a;}
+  .cv.leftdoc .ld-row .right{font-size:12px;color:#666;white-space:nowrap;}
+  .cv.leftdoc .ld-sub{font-size:12.3px;color:#666;margin-top:2px;}
+  .cv.leftdoc .ld-bullets{margin:6px 0 0 16px;padding:0;font-size:12.5px;line-height:1.55;color:#3a3a3a;}
+  .cv.leftdoc .ld-bullets li{margin-bottom:3px;}
+  .cv.leftdoc .ld-skills-line{font-size:12.6px;line-height:1.75;color:#3a3a3a;}
+  .cv.leftdoc .ld-link{color:#1a1a1a;text-decoration:underline;}
+
+  .cv-frame{
+    flex:none;
+    max-width:100%;
+  }
+  .cv-stage{
+    width:816px;
+    transform-origin:top left;
+  }
+
+  /* ---------------- MOBILE TABS ---------------- */
+  .mobile-tabs{
+    display:none;
+    position:fixed;
+    left:0;
+    right:0;
+    bottom:0;
+    z-index:60;
+    background:#fff;
+    border-top:1px solid var(--line);
+    padding:8px 10px calc(8px + env(safe-area-inset-bottom));
+    gap:8px;
+  }
+  .mobile-tabs .mt-btn{
+    flex:1 1 0;
+    font-family:'Inter',sans-serif;
+    font-size:13.5px;
+    font-weight:600;
+    padding:11px 10px;
+    border-radius:22px;
+    border:1.5px solid var(--line);
+    background:#fff;
+    color:var(--ink-soft);
+    cursor:pointer;
+  }
+  .mobile-tabs .mt-btn.active{
+    background:var(--blue);
+    border-color:var(--blue);
+    color:#fff;
+  }
+
+  /* ---------------- RESPONSIVE ---------------- */
+  @media (max-width:1180px){
+    .app{grid-template-columns:var(--form-w, 360px) 1fr;}
+    .preview-panel{padding:24px;}
+  }
+
+  @media (max-width:900px){
+    html,body{height:auto;}
+    .builder-view{min-height:0;}
+    .app{
+      display:block;
+      height:auto;
+      overflow:visible;
+    }
+    .form-panel{
+      height:auto;
+      border-right:none;
+      border-bottom:1px solid var(--line);
+      padding:22px 16px 84px 16px;
+      display:block;
+    }
+    .form-scroll{
+      overflow:visible;
+      flex:none;
+      padding-bottom:0;
+    }
+    .preview-panel{
+      display:none;
+      height:auto;
+      min-height:0;
+      overflow:visible;
+      padding:18px 12px 96px 12px;
+    }
+    body.view-preview .form-panel{display:none;}
+    body.view-preview .preview-panel{display:flex;}
+    .mobile-tabs{display:flex;}
+    /* 16px stops iOS from zooming in when a field is focused */
+    input[type=text], textarea{font-size:16px;}
+    .font-grid{grid-template-columns:1fr;}
+  }
+
+  @media (max-width:420px){
+    .form-panel{padding:18px 13px 84px 13px;}
+    .preview-panel{padding:14px 8px 96px 8px;}
+  }
+
+
+
+  @media print{
+    @page{size:letter;margin:0.55in;}
+
+    /* the fixed viewport heights must be released, or only page 1 prints */
+    html, body{
+      height:auto !important;
+      min-height:0 !important;
+      overflow:visible !important;
+      background:#fff !important;
+    }
+    .builder-view{
+      min-height:0 !important;
+      height:auto !important;
+      overflow:visible !important;
+      background:#fff !important;
+    }
+    .form-panel, .actions, .no-print{display:none !important;}
+    .app{
+      display:block !important;
+      height:auto !important;
+      min-height:0 !important;
+      overflow:visible !important;
+      background:none !important;
+      background-image:none !important;
+    }
+    .preview-panel{
+      display:block !important;
+      padding:0 !important;
+      height:auto !important;
+      min-height:0 !important;
+      overflow:visible !important;
+      background:none !important;
+    }
+    .cv-frame{
+      width:auto !important;
+      height:auto !important;
+      max-width:none !important;
+    }
+    .cv-stage{
+      width:100% !important;
+      transform:none !important;
+    }
+    .mobile-tabs{display:none !important;}
+    .cv{
+      box-shadow:none !important;
+      width:100% !important;
+      max-width:100% !important;
+      min-height:0 !important;
+      height:auto !important;
+      overflow:visible !important;
+    }
+    .cv.leftdoc{padding:0 !important;}
+    /* empty sections (still showing their hint text) are left out of the printed/PDF CV */
+    .cv.leftdoc .ld-section:has(.placeholder){display:none !important;}
+
+    /* keep entries from being cut in half at a page break */
+    .cv.leftdoc .ld-entry,
+    .cv.leftdoc .ld-row,
+    .cv.leftdoc .ld-bullets li{
+      break-inside:avoid;
+      page-break-inside:avoid;
+    }
+    .cv.leftdoc .ld-h2{
+      break-after:avoid;
+      page-break-after:avoid;
+    }
+    *{
+      -webkit-print-color-adjust:exact;
+      print-color-adjust:exact;
+    }
+  }
+
+  .builder-view{direction:ltr;}
+  body.user-worker .student-only{display:none !important;}
+
+  .font-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:8px;
+    margin-top:8px;
+  }
+  .font-option{
+    text-align:left;
+    padding:10px 12px;
+    border:1.5px solid var(--line);
+    border-radius:8px;
+    background:#fff;
+    cursor:pointer;
+  }
+  .font-option .fo-sample{
+    font-size:15px;
+    color:var(--ink);
+    line-height:1.2;
+  }
+  .font-option .fo-label{
+    font-size:10.5px;
+    color:var(--muted);
+    margin-top:3px;
+  }
+  .font-option:hover{border-color:#8FB0E3;}
+  .font-option.active{
+    border-color:var(--green);
+    background:var(--green-wash);
+    box-shadow:inset 0 0 0 1px var(--green);
+  }
+  .font-option.active .fo-label{color:var(--green-dark);}
+
+  .swatch-row{
+    display:flex;
+    gap:9px;
+    margin-top:8px;
+    flex-wrap:wrap;
+  }
+  .swatch{
+    width:28px;
+    height:28px;
+    border-radius:50%;
+    border:2px solid transparent;
+    cursor:pointer;
+    padding:0;
+    box-shadow:inset 0 0 0 1.5px rgba(0,0,0,.08);
+  }
+  .swatch.active{border-color:var(--blue);box-shadow:inset 0 0 0 2px #fff;}
+
+  ::selection{background:#CFE0F8;color:var(--blue-deep);}
+  .form-scroll{scrollbar-width:thin;scrollbar-color:#9DB6DE transparent;}
+  .add-btn:hover{background:var(--green-dark);opacity:1;}
+
+  /* ================= MOTION, FEEDBACK & POLISH ================= */
+  html{scroll-behavior:smooth;}
+  .form-scroll{scroll-behavior:smooth;}
+  button:focus-visible{outline:3px solid rgba(11,160,71,.5);outline-offset:2px;}
+
+  /* micro-interactions */
+  .brand-mark{transition:transform .25s cubic-bezier(.2,.9,.3,1.3);}
+  .brand-mark:hover{transform:rotate(-5deg) scale(1.08);}
+  .primary-btn{transition:transform .15s ease,box-shadow .15s ease,background .15s ease;}
+  .primary-btn:hover{transform:translateY(-1px);}
+  .primary-btn:active{transform:translateY(2px);box-shadow:0 1px 0 var(--green);}
+  .secondary-download-btn{transition:background .15s ease,color .15s ease,transform .15s ease;}
+  .secondary-download-btn:active{transform:scale(.98);}
+  .add-btn{transition:transform .15s ease,background .15s ease,opacity .15s ease;}
+  .add-btn:hover{transform:translateY(-1px);}
+  .add-btn:active{transform:scale(.96);}
+  .font-option{transition:border-color .15s ease,background .15s ease,transform .15s ease,box-shadow .15s ease;}
+  .font-option:hover{transform:translateY(-2px);}
+  .swatch{transition:transform .15s ease;}
+  input[type=text],textarea{transition:border-color .15s ease,box-shadow .15s ease;}
+  .entry-card{transition:box-shadow .2s ease;}
+  .entry-card:focus-within{box-shadow:0 8px 20px -12px rgba(18,63,135,.5);}
+  .cv{transition:box-shadow .3s ease;}
+  .cv:hover{box-shadow:0 26px 50px -20px rgba(18,63,135,.5), 0 2px 8px rgba(18,63,135,.12);}
+
+  /* CV completeness meter */
+  .progress{margin:4px 0 14px;flex:none;}
+  .pg-top{display:flex;justify-content:space-between;align-items:baseline;gap:10px;font-size:11.5px;color:var(--ink-soft);margin-bottom:6px;}
+  .pg-top b{color:var(--blue);font-family:'Space Grotesk',sans-serif;font-size:12.5px;}
+  .pg-msg{color:var(--muted);text-align:right;transition:color .3s ease;}
+  .pg-track{height:8px;border-radius:6px;background:var(--blue-wash);overflow:hidden;}
+  .pg-fill{height:100%;width:0;border-radius:6px;background:linear-gradient(90deg,var(--blue),var(--green));transition:width .6s cubic-bezier(.2,.8,.2,1);}
+  .progress.done .pg-msg{color:var(--green-dark);font-weight:600;}
+
+  /* toast + confetti */
+  #toast{
+    position:fixed;left:50%;bottom:28px;transform:translate(-50%,16px);opacity:0;pointer-events:none;
+    background:var(--blue);color:#fff;padding:12px 20px;border-radius:999px;
+    font:600 13.5px 'Inter',sans-serif;display:flex;align-items:center;gap:10px;
+    box-shadow:0 12px 30px -10px rgba(18,63,135,.7);z-index:200;max-width:92vw;
+    transition:opacity .3s ease,transform .3s ease;
+  }
+  #toast.show{opacity:1;transform:translate(-50%,0);}
+  #toast svg{flex:none;color:#5BE08C;}
+  #confetti{position:fixed;left:0;top:0;width:100vw;height:100vh;z-index:190;pointer-events:none;}
+  @media (max-width:900px){#toast{bottom:88px;}}
+  @media print{#toast,#confetti{display:none !important;}}
+
+  /* entrance animations (only for people who have not asked for reduced motion) */
+  @keyframes fadeUp{from{opacity:0;transform:translateY(14px);}to{opacity:1;transform:none;}}
+  @keyframes paperIn{from{opacity:0;transform:translateY(24px) scale(.985);}to{opacity:1;transform:none;}}
+  @keyframes popIn{0%{transform:scale(.93);}60%{transform:scale(1.04);}100%{transform:scale(1);}}
+  @keyframes logoPop{0%{transform:scale(.6) rotate(-8deg);opacity:0;}60%{transform:scale(1.1) rotate(3deg);opacity:1;}100%{transform:none;opacity:1;}}
+  @keyframes glowPulse{0%,100%{box-shadow:0 3px 0 var(--green),0 0 0 0 rgba(11,160,71,.45);}50%{box-shadow:0 3px 0 var(--green),0 0 0 9px rgba(11,160,71,0);}}
+  @media (prefers-reduced-motion:no-preference){
+    .brand-mark{animation:logoPop .7s cubic-bezier(.2,.9,.3,1.2) backwards;}
+    .brand h1{animation:fadeUp .5s .12s ease backwards;}
+    .sub{animation:fadeUp .5s .2s ease backwards;}
+    .progress{animation:fadeUp .5s .28s ease backwards;}
+    .form-scroll .section-block{animation:fadeUp .55s ease backwards;}
+    .form-scroll .section-block:nth-child(1){animation-delay:0.33s;}
+    .form-scroll .section-block:nth-child(2){animation-delay:0.38s;}
+    .form-scroll .section-block:nth-child(3){animation-delay:0.43s;}
+    .form-scroll .section-block:nth-child(4){animation-delay:0.48s;}
+    .form-scroll .section-block:nth-child(5){animation-delay:0.53s;}
+    .form-scroll .section-block:nth-child(6){animation-delay:0.58s;}
+    .form-scroll .section-block:nth-child(7){animation-delay:0.63s;}
+    .form-scroll .section-block:nth-child(8){animation-delay:0.68s;}
+    .form-scroll .section-block:nth-child(9){animation-delay:0.73s;}
+    .form-scroll .section-block:nth-child(10){animation-delay:0.78s;}
+    .form-scroll .section-block:nth-child(11){animation-delay:0.83s;}
+    .form-scroll .section-block:nth-child(12){animation-delay:0.88s;}
+    .form-scroll .section-block:nth-child(13){animation-delay:0.90s;}
+    .form-scroll .section-block:nth-child(14){animation-delay:0.90s;}
+    .cv-frame{animation:paperIn .7s .2s cubic-bezier(.2,.8,.2,1) backwards;}
+    .actions{animation:fadeUp .5s .5s ease backwards;}
+    .font-option.active{animation:popIn .3s ease;}
+    .primary-btn.ready{animation:glowPulse 2.2s ease-in-out infinite;}
+  }
+
+  /* ---------------- RESIZABLE FORM PANEL ---------------- */
+  .form-panel{z-index:2;}
+  .panel-resizer{
+    position:absolute;top:0;bottom:0;right:-7px;width:14px;
+    cursor:col-resize;z-index:6;touch-action:none;
+    display:flex;align-items:center;justify-content:center;
+    outline:none;
+  }
+  .panel-resizer::before{
+    content:'';position:absolute;top:0;bottom:0;left:50%;width:3px;margin-left:-1.5px;
+    background:transparent;transition:background .15s ease;
+  }
+  .panel-resizer:hover::before,
+  .panel-resizer.active::before,
+  .panel-resizer:focus-visible::before{background:var(--green);}
+  .panel-resizer .grip{
+    position:relative;width:14px;height:48px;border-radius:8px;
+    background:#fff;border:1.5px solid var(--line);
+    box-shadow:0 4px 12px -6px rgba(18,63,135,.55);
+    background-image:radial-gradient(var(--blue) 1.2px,transparent 1.4px);
+    background-size:6px 8px;background-position:center;background-repeat:repeat-y;
+    transition:border-color .15s ease,transform .15s ease;
+  }
+  .panel-resizer:hover .grip,
+  .panel-resizer.active .grip,
+  .panel-resizer:focus-visible .grip{border-color:var(--green);transform:scale(1.08);}
+  body.resizing,body.resizing *{cursor:col-resize !important;user-select:none !important;}
+  @keyframes gripNudge{0%,100%{transform:translateX(0);}30%{transform:translateX(-5px);}60%{transform:translateX(3px);}}
+  @media (prefers-reduced-motion:no-preference){
+    .panel-resizer.nudge .grip{animation:gripNudge 1s 1.8s ease 2;}
+  }
+  @media (max-width:900px){.panel-resizer{display:none;}}
+  @media print{.panel-resizer{display:none !important;}}
+</style>
+<style id="build-additions">
+/* ===== BUILD PAGE ADDITIONS (navigation, templates, assistant, checklist, auto-save) ===== */
+.site-nav{display:flex;flex-wrap:wrap;gap:6px;margin:2px 0 12px;}
+.site-nav a{font-family:'Inter',sans-serif;font-size:12.5px;font-weight:600;padding:6px 13px;border-radius:999px;border:1.5px solid var(--line);color:var(--ink-soft);text-decoration:none;transition:background .15s,color .15s,border-color .15s;}
+.site-nav a:hover{border-color:var(--blue);color:var(--blue);}
+.site-nav a.active{background:var(--blue);border-color:var(--blue);color:#fff;}
+.site-nav a:focus-visible{outline:3px solid rgba(11,160,71,.5);outline-offset:2px;}
+
+/* completion checklist (sits under the existing completeness meter) */
+.cl{flex:none;margin:-6px 0 12px;font-size:12px;}
+.cl summary{cursor:pointer;color:var(--blue);font-weight:600;list-style:none;display:inline-flex;align-items:center;gap:6px;}
+.cl summary::-webkit-details-marker{display:none;}
+.cl summary::before{content:'\25B8';font-size:10px;transition:transform .15s ease;}
+.cl[open] summary::before{transform:rotate(90deg);}
+.cl-list{list-style:none;margin:8px 0 0;padding:0;display:grid;gap:5px;max-height:34vh;overflow:auto;}
+.cl-item{display:flex;width:100%;align-items:center;gap:8px;text-align:left;font-family:inherit;font-size:12px;padding:6px 9px;border:1px solid var(--line);border-radius:8px;background:#fff;cursor:pointer;color:var(--ink);}
+.cl-item:hover{border-color:var(--blue);}
+.cl-item .mk{width:16px;height:16px;border-radius:50%;border:1.5px solid var(--line);flex:none;display:grid;place-items:center;font-size:10px;line-height:1;}
+.cl-item.done{color:var(--ink-soft);}
+.cl-item.done .mk{background:var(--green);border-color:var(--green);color:#fff;}
+.cl-item .pts{margin-left:auto;color:var(--green-dark);font-weight:700;}
+
+/* smart assistant */
+.assist-sum{font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:700;letter-spacing:.02em;color:var(--blue);display:flex;align-items:center;gap:8px;cursor:pointer;list-style:none;}
+.assist-sum::-webkit-details-marker{display:none;}
+.assist-sum::before{content:'';flex:none;width:16px;height:5px;border-radius:3px;background:var(--green);}
+.as-count{margin-left:auto;min-width:24px;text-align:center;font-size:11.5px;font-weight:700;padding:2px 8px;border-radius:999px;background:#FDEBDD;color:#B4571A;}
+.as-count.ok{background:var(--green-wash);color:var(--green-dark);}
+.as-list{list-style:none;margin:12px 0 0;padding:0;display:grid;gap:8px;}
+.as-item{display:flex;gap:10px;align-items:flex-start;font-size:12.5px;line-height:1.45;padding:10px 12px;border-radius:9px;border:1px solid var(--line);background:#fff;color:var(--ink);}
+.as-item[data-target]{cursor:pointer;}
+.as-item[data-target]:hover{border-color:var(--blue);}
+.as-item .dot{flex:none;width:8px;height:8px;border-radius:50%;margin-top:5px;}
+.as-item.warn{border-color:#F0C9A8;background:#FFF7F0;}
+.as-item.warn .dot{background:#E07B2E;}
+.as-item.tip{background:var(--paper2);}
+.as-item.tip .dot{background:var(--blue);}
+.as-item.good{border-color:#BFE3CC;background:var(--green-wash);}
+.as-item.good .dot{background:var(--green);}
+.as-act{display:inline-block;margin-top:6px;font-family:inherit;font-size:11.5px;font-weight:600;color:var(--blue);background:#fff;border:1.5px solid var(--blue);border-radius:999px;padding:3px 11px;cursor:pointer;}
+.as-act:hover{background:var(--blue);color:#fff;}
+
+/* auto-save status bar */
+.savebar{display:flex;justify-content:space-between;align-items:center;gap:8px;font-size:11.5px;color:var(--muted);margin-top:8px;}
+#saveStatus.saved::before{content:'';display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--green);margin-right:6px;}
+.linkbtn{background:none;border:none;color:var(--blue);text-decoration:underline;font:inherit;cursor:pointer;padding:0;}
+.linkbtn:hover{color:var(--blue-dark);}
+
+@media print{
+  .site-nav,.cl,.savebar{display:none !important;}
+}
+</style>
+</head>
+<body>
+
+<div id="page-builder" class="builder-view">
+
+
+<div class="app">
+  <canvas id="bgfx" aria-hidden="true"></canvas>
+  <!-- ============ FORM PANEL ============ -->
+  <div class="form-panel no-print">
+    <div class="brand">
+      <img class="brand-mark" src="data:image/png;base64,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" alt="MUSTAWY CV logo" width="40" height="48" style="object-fit:contain;">
+      <h1 id="builder-h1">MUSTAWY <span class="brand-accent">CV</span></h1>
+    </div>
+    <nav class="site-nav no-print" aria-label="Site">
+      <a href="index.html">Home</a>
+      <a href="build.html" class="active" aria-current="page">Build Your CV</a>
+      <a href="job-matcher.html">Job Matcher</a>
+    </nav>
+    <p class="sub" id="builder-sub">Built for students applying to internships. Fill in each section — your CV updates live on the right.</p>
+    <div class="progress no-print" id="cvProgress" aria-live="polite">
+      <div class="pg-top"><span>CV completeness <b id="pgPct">0%</b></span><span class="pg-msg" id="pgMsg">Start with your full name</span></div>
+      <div class="pg-track"><div class="pg-fill" id="pgFill"></div></div>
+    </div>
+
+    <details class="cl no-print" id="clDetails">
+      <summary id="clSummary">What’s missing?</summary>
+      <ul class="cl-list" id="clList"></ul>
+    </details>
+
+    <div class="form-scroll">
+
+    <div class="section-block" id="assist-block">
+      <details id="assist">
+        <summary class="assist-sum"><span>Smart CV Assistant</span><span class="as-count" id="asCount">0</span></summary>
+        <p class="hint" style="margin:8px 0 0;">Live tips based on what you have written. Click a tip to jump to that field.</p>
+        <ul class="as-list" id="asList" aria-live="polite"></ul>
+      </details>
+    </div>
+
+    <div class="section-block">
+      <h2>Font</h2>
+      <label>Choose how your CV looks — this changes the document only, not this form.</label>
+      <div class="font-grid" id="font-grid"></div>
+    </div>
+
+    <div class="section-block">
+      <h2>Header</h2>
+      <label>Full Name</label>
+      <input type="text" id="f-name" placeholder="Full Name">
+      <label id="jobtitle-label">Field of Study / Target Role</label>
+      <input type="text" id="f-jobtitle" placeholder="e.g. Marketing Student — seeking Marketing Intern role">
+      <div class="row2">
+        <div><label>Email</label><input type="text" id="f-email" placeholder="Email Address"></div>
+        <div><label>Phone</label><input type="text" id="f-phone" placeholder="Phone Number"></div>
+      </div>
+      <div class="row2">
+        <div><label>Location</label><input type="text" id="f-location" placeholder="City, Country"></div>
+        <div><label>LinkedIn</label><input type="text" id="f-linkedin" placeholder="linkedin.com/in/yourname"></div>
+      </div>
+      <label>GitHub</label>
+      <input type="text" id="f-github" placeholder="github.com/yourusername">
+      <div class="row2 student-only">
+        <div><label>Available From</label><input type="text" id="f-availfrom" placeholder="e.g. June 2026"></div>
+        <div><label>Availability / Duration</label><input type="text" id="f-availdur" placeholder="e.g. 3 months, full-time"></div>
+      </div>
+    </div>
+
+    <div class="section-block">
+      <h2 id="objective-heading">Objective</h2>
+      <label id="objective-label">What internship are you looking for, and what do you bring?</label>
+      <textarea id="f-summary" placeholder="e.g. A motivated second-year Computer Science student seeking a Software Engineering internship to apply my skills in..."></textarea>
+    </div>
+
+    <div class="section-block">
+      <h2>Education</h2>
+      <div id="education-list"></div>
+      <button class="add-btn" onclick="addEducation()">+ Add Education</button>
+    </div>
+
+    <div class="section-block">
+      <h2 id="exp-heading">Experience &amp; Internships</h2>
+      <label class="hint" id="exp-hint" style="margin:0 0 4px 0;">Include part-time jobs, prior internships, or volunteer roles — it's okay if this is your first one.</label>
+      <div id="experience-list"></div>
+      <button class="add-btn" onclick="addExperience()">+ Add Experience</button>
+    </div>
+
+    <div class="section-block student-only">
+      <h2>Activities &amp; Leadership</h2>
+      <label>One activity per line — clubs, student organizations, volunteering</label>
+      <textarea id="f-activities" placeholder="Member, Robotics Club — led a team of 5 to build a competition robot&#10;Volunteer, Local Food Bank"></textarea>
+    </div>
+
+    <div class="section-block">
+      <h2>Projects</h2>
+      <div id="projects-list"></div>
+      <button class="add-btn" onclick="addProject()">+ Add Project</button>
+    </div>
+
+    <div class="section-block">
+      <h2>Skills &amp; Languages</h2>
+      <label>One skill or language per line</label>
+      <textarea id="f-skills" placeholder="Skill 1&#10;Skill 2&#10;Skill 3"></textarea>
+    </div>
+
+    <div class="section-block">
+      <h2>Certificates</h2>
+      <div id="certificates-list"></div>
+      <button class="add-btn" onclick="addCertificate()">+ Add Certificate</button>
+    </div>
+    </div><!-- /.form-scroll -->
+
+    <div class="actions">
+      <button class="primary-btn" onclick="window.print()">Download as PDF</button>
+      <button class="secondary-download-btn" onclick="downloadWord()">Download as Word</button>
+      <p class="hint">PDF opens your browser's print dialog — choose "Save as PDF" as the destination. Word downloads a .doc file you can edit in Microsoft Word.</p>
+      <div class="savebar no-print"><span id="saveStatus" role="status" aria-live="polite">Auto-save is on</span><button type="button" class="linkbtn" id="clearSaved">Clear saved data</button></div>
+    </div>
+  </div>
+
+  <!-- ============ PREVIEW PANEL ============ -->
+  <div class="preview-panel">
+    <div class="cv-frame" id="cvFrame">
+      <div class="cv-stage" id="cvStage">
+        <div class="cv" id="cv"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+
+<div class="mobile-tabs no-print" id="mobileTabs">
+  <button type="button" class="mt-btn active" data-view="edit">Editor</button>
+  <button type="button" class="mt-btn" data-view="preview">Preview</button>
+</div>
+
+<script>
+let userType = 'student';
+let cvFont = 'classic';
+let cvAccent = 'black';
+
+const FONT_PRESETS = {
+  classic:     { label:'Classic',     heading:"Georgia,'Times New Roman',serif",              body:"'Helvetica Neue',Arial,sans-serif" },
+  modern:      { label:'Modern',      heading:"'Space Grotesk','Helvetica Neue',Arial,sans-serif", body:"'Inter','Helvetica Neue',Arial,sans-serif" },
+  traditional: { label:'Traditional', heading:"'Times New Roman',Times,serif",                 body:"'Times New Roman',Times,serif" },
+  minimal:     { label:'Minimal',     heading:"'Helvetica Neue',Arial,sans-serif",              body:"'Helvetica Neue',Arial,sans-serif" },
+  elegant:     { label:'Elegant',     heading:"'Lora',Georgia,serif",                           body:"'Lora',Georgia,serif" },
+  editorial:   { label:'Editorial',   heading:"'Merriweather',Georgia,serif",                   body:"'Source Sans 3','Helvetica Neue',Arial,sans-serif" }
+};
+
+const ACCENT_PRESETS = {
+  black: { label:'Black', hex:'#000000' }
+};
+
+function setFont(key){
+  cvFont = key;
+  renderFontGrid();
+  render();
+}
+
+function renderFontGrid(){
+  const grid = document.getElementById('font-grid');
+  if(!grid) return;
+  grid.innerHTML = Object.keys(FONT_PRESETS).map(key=>{
+    const p = FONT_PRESETS[key];
+    const active = key === cvFont ? ' active' : '';
+    return `<button type="button" class="font-option${active}" onclick="setFont('${key}')">
+      <div class="fo-sample" style="font-family:${p.heading};">Aa</div>
+      <div class="fo-label">${p.label}</div>
+    </button>`;
+  }).join('');
+}
+
+function setAccent(key){
+  cvAccent = key;
+  renderColorRow();
+  render();
+}
+
+function renderColorRow(){
+  const row = document.getElementById('color-row');
+  if(!row) return;
+  row.innerHTML = Object.keys(ACCENT_PRESETS).map(key=>{
+    const p = ACCENT_PRESETS[key];
+    const active = key === cvAccent ? ' active' : '';
+    return `<button type="button" class="swatch${active}" style="background:${p.hex};" title="${p.label}" onclick="setAccent('${key}')"></button>`;
+  }).join('');
+}
+
+
+let state = {
+  education: [{}],
+  experience: [{}],
+  certificates: [{}],
+  projects: [{}]
+};
+
+function addEducation(){ state.education.push({}); renderForm(); render(); }
+function addExperience(){ state.experience.push({}); renderForm(); render(); }
+function addCertificate(){ state.certificates.push({}); renderForm(); render(); }
+function addProject(){ state.projects.push({}); renderForm(); render(); }
+function removeItem(arr, idx){ state[arr].splice(idx,1); renderForm(); render(); }
+
+function escapeHtml(str){
+  return (str||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+}
+
+
+function renderForm(){
+  // Education
+  const eduList = document.getElementById('education-list');
+  eduList.innerHTML = state.education.map((e,i)=>`
+    <div class="entry-card">
+      ${state.education.length>1?`<button class="remove-btn" onclick="removeItem('education',${i})">✕ remove</button>`:''}
+      <label>Degree / Program</label>
+      <input type="text" data-arr="education" data-idx="${i}" data-field="degree" value="${escapeHtml(e.degree)}" placeholder="Degree / Program">
+      <label>Institution</label>
+      <input type="text" data-arr="education" data-idx="${i}" data-field="institution" value="${escapeHtml(e.institution)}" placeholder="University Name">
+      <label>Dates</label>
+      <input type="text" data-arr="education" data-idx="${i}" data-field="dates" value="${escapeHtml(e.dates)}" placeholder="Start Date – End Date | Location">
+      <div class="row2 student-only">
+        <div><label>GPA (optional)</label><input type="text" data-arr="education" data-idx="${i}" data-field="gpa" value="${escapeHtml(e.gpa)}" placeholder="e.g. 3.7 / 4.0"></div>
+        <div><label>Expected Graduation</label><input type="text" data-arr="education" data-idx="${i}" data-field="gradyear" value="${escapeHtml(e.gradyear)}" placeholder="e.g. 2027"></div>
+      </div>
+      <div class="student-only">
+        <label>Relevant Coursework (optional)</label>
+        <input type="text" data-arr="education" data-idx="${i}" data-field="coursework" value="${escapeHtml(e.coursework)}" placeholder="e.g. Data Structures, Marketing Analytics">
+      </div>
+      <label>Details (optional)</label>
+      <textarea data-arr="education" data-idx="${i}" data-field="details" placeholder="Additional details (optional)">${escapeHtml(e.details)}</textarea>
+    </div>`).join('');
+
+  // Experience
+  const expList = document.getElementById('experience-list');
+  expList.innerHTML = state.experience.map((e,i)=>`
+    <div class="entry-card">
+      ${state.experience.length>1?`<button class="remove-btn" onclick="removeItem('experience',${i})">✕ remove</button>`:''}
+      <label>Job Title</label>
+      <input type="text" data-arr="experience" data-idx="${i}" data-field="title" value="${escapeHtml(e.title)}" placeholder="Job Title">
+      <label>Company</label>
+      <input type="text" data-arr="experience" data-idx="${i}" data-field="company" value="${escapeHtml(e.company)}" placeholder="Company Name">
+      <label>Dates</label>
+      <input type="text" data-arr="experience" data-idx="${i}" data-field="dates" value="${escapeHtml(e.dates)}" placeholder="Start Date – End Date | Location">
+      <label>Bullet points (one per line)</label>
+      <textarea data-arr="experience" data-idx="${i}" data-field="bullets" placeholder="Responsibility or achievement 1&#10;Responsibility or achievement 2">${escapeHtml(e.bullets)}</textarea>
+    </div>`).join('');
+
+  // Projects
+  const projList = document.getElementById('projects-list');
+  projList.innerHTML = state.projects.map((p,i)=>`
+    <div class="entry-card">
+      ${state.projects.length>1?`<button class="remove-btn" onclick="removeItem('projects',${i})">✕ remove</button>`:''}
+      <label>Project Name</label>
+      <input type="text" data-arr="projects" data-idx="${i}" data-field="name" value="${escapeHtml(p.name)}" placeholder="Project Name">
+      <label>Link (optional)</label>
+      <input type="text" data-arr="projects" data-idx="${i}" data-field="link" value="${escapeHtml(p.link)}" placeholder="https://github.com/you/project">
+      <label>Dates</label>
+      <input type="text" data-arr="projects" data-idx="${i}" data-field="dates" value="${escapeHtml(p.dates)}" placeholder="Start Date – End Date">
+      <label>Bullet points (one per line)</label>
+      <textarea data-arr="projects" data-idx="${i}" data-field="bullets" placeholder="Project detail 1&#10;Project detail 2">${escapeHtml(p.bullets)}</textarea>
+    </div>`).join('');
+
+  // Certificates
+  const certList = document.getElementById('certificates-list');
+  certList.innerHTML = state.certificates.map((c,i)=>`
+    <div class="entry-card">
+      ${state.certificates.length>1?`<button class="remove-btn" onclick="removeItem('certificates',${i})">✕ remove</button>`:''}
+      <label>Certificate Name</label>
+      <input type="text" data-arr="certificates" data-idx="${i}" data-field="name" value="${escapeHtml(c.name)}" placeholder="Certificate Name">
+      <label>Link (optional)</label>
+      <input type="text" data-arr="certificates" data-idx="${i}" data-field="link" value="${escapeHtml(c.link)}" placeholder="https://credential-url.com">
+    </div>`).join('');
+
+  // attach listeners to all dynamic inputs
+  document.querySelectorAll('[data-arr]').forEach(el=>{
+    el.addEventListener('input', e=>{
+      const {arr, idx, field} = e.target.dataset;
+      state[arr][idx][field] = e.target.value;
+      render();
+    });
+  });
+}
+
+function val(id){ return document.getElementById(id) ? document.getElementById(id).value.trim() : ''; }
+
+function render(){
+  const name = val('f-name') || 'Your Full Name';
+  const jobtitle = val('f-jobtitle');
+  const email = val('f-email');
+  const phone = val('f-phone');
+  const location = val('f-location');
+  const linkedin = val('f-linkedin');
+  const github = val('f-github');
+  const availfrom = val('f-availfrom');
+  const availdur = val('f-availdur');
+  const summary = val('f-summary');
+  const skills = val('f-skills').split('\n').map(s=>s.trim()).filter(Boolean);
+  const activities = val('f-activities').split('\n').map(s=>s.trim()).filter(Boolean);
+
+  document.getElementById('cv').className = 'cv leftdoc';
+  document.getElementById('cv').innerHTML = renderLeftDoc({
+    name, jobtitle, email, phone, location, linkedin, github, availfrom, availdur, summary, skills, activities,
+    edu: state.education.filter(e=>e.degree||e.institution),
+    exp: state.experience.filter(e=>e.title||e.company),
+    proj: state.projects.filter(p=>p.name),
+    cert: state.certificates.filter(c=>c.name)
+  });
+  const fp = FONT_PRESETS[cvFont] || FONT_PRESETS.classic;
+  document.getElementById('cv').style.setProperty('--cv-heading-font', fp.heading);
+  document.getElementById('cv').style.setProperty('--cv-body-font', fp.body);
+  const ap = ACCENT_PRESETS[cvAccent] || ACCENT_PRESETS.black;
+  document.getElementById('cv').style.setProperty('--cv-accent', ap.hex);
+  if(typeof fitPreview === 'function') fitPreview();
+}
+
+function downloadWord(){
+  const cvEl = document.getElementById('cv');
+  if(!cvEl) return;
+
+  // Pull in the page's stylesheet(s) so the exported doc keeps the CV's formatting
+  const styleTags = Array.from(document.querySelectorAll('style'))
+    .map(s => s.innerHTML)
+    .join('\n');
+
+  const nameForFile = (val('f-name') || 'CV').trim().replace(/[^\w\-]+/g, '_');
+
+  const htmlDoc = `<!DOCTYPE html>
+<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:w="urn:schemas-microsoft-com:office:word" xmlns="http://www.w3.org/TR/REC-html40">
+<head>
+<meta charset="utf-8">
+<title>${nameForFile}</title>
+<!--[if gte mso 9]>
+<xml>
+<w:WordDocument>
+<w:View>Print</w:View>
+<w:Zoom>90</w:Zoom>
+<w:DoNotOptimizeForBrowser/>
+</w:WordDocument>
+</xml>
+<![endif]-->
+<style>
+  body{ margin:0; }
+  ${styleTags}
+</style>
+</head>
+<body>
+${cvEl.outerHTML}
+</body>
+</html>`;
+
+  const blob = new Blob(['\ufeff', htmlDoc], { type: 'application/msword' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = `${nameForFile}.doc`;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+}
+
+function renderLeftDoc(d){
+  const toUrl = (u) => /^https?:\/\//i.test(u) ? u : `https://${u}`;
+  const contactBits = [d.phone, d.email, d.location].filter(Boolean).map(escapeHtml);
+  if(d.linkedin) contactBits.push(`<a class="ld-link" href="${escapeHtml(toUrl(d.linkedin))}" target="_blank" rel="noopener">${escapeHtml(String(d.linkedin).replace(/^https?:\/\//i,'').replace(/\/$/,''))}</a>`);
+  if(d.github) contactBits.push(`<a class="ld-link" href="${escapeHtml(toUrl(d.github))}" target="_blank" rel="noopener">${escapeHtml(String(d.github).replace(/^https?:\/\//i,'').replace(/\/$/,''))}</a>`);
+  const contactLine = contactBits.join('<span class="ld-sep"> | </span>');
+  const availLine = [d.availfrom?`Available from ${d.availfrom}`:'', d.availdur].filter(Boolean).join(' · ');
+
+  const isWorker = (typeof userType !== 'undefined') && userType === 'worker';
+  const summaryLabel = isWorker ? 'Professional Summary' : 'Objective';
+  const expLabel = isWorker ? 'Work Experience' : 'Experience';
+  const summaryHtml = d.summary ? escapeHtml(d.summary) : `<span class="placeholder">Write your ${isWorker?'professional summary':'internship objective'}</span>`;
+
+  const eduHtml = d.edu.map(e=>{
+    const metaBits = [e.gpa?`GPA: ${e.gpa}`:'', e.gradyear?`Expected Graduation: ${e.gradyear}`:''].filter(Boolean).map(escapeHtml).join('  |  ');
+    return `
+    <div class="ld-entry">
+      <div class="ld-row">
+        <div class="left">${escapeHtml(e.degree||'')}${e.institution?` | ${escapeHtml(e.institution)}`:''}</div>
+        <div class="right">${escapeHtml(e.dates||'')}</div>
+      </div>
+      ${metaBits?`<div class="ld-sub">${metaBits}</div>`:''}
+      ${e.coursework?`<div class="ld-sub"><em>Relevant Coursework:</em> ${escapeHtml(e.coursework)}</div>`:''}
+      ${e.details?`<div class="ld-body-text">${escapeHtml(e.details)}</div>`:''}
+    </div>`;
+  }).join('') || `<div class="placeholder">Add your education</div>`;
+
+  const skillsHtml = d.skills.length ? d.skills.map(escapeHtml).join(', ') : '<span class="placeholder">List your skills</span>';
+
+  const expHtml = d.exp.map(e=>`
+    <div class="ld-entry">
+      <div class="ld-row">
+        <div class="left">${escapeHtml(e.title||'')}${e.company?` | ${escapeHtml(e.company)}`:''}</div>
+        <div class="right">${escapeHtml(e.dates||'')}</div>
+      </div>
+      ${e.bullets ? `<ul class="ld-bullets">${e.bullets.split('\n').filter(Boolean).map(b=>`<li>${escapeHtml(b)}</li>`).join('')}</ul>` : ''}
+    </div>`).join('') || `<div class="placeholder">${isWorker ? 'Add your work experience' : "No experience yet? That's okay — this section is optional"}</div>`;
+
+  const activitiesHtml = (d.activities||[]).length
+    ? `<ul class="ld-bullets">${d.activities.map(a=>`<li>${escapeHtml(a)}</li>`).join('')}</ul>` : '';
+
+  const certHtml = d.cert.map(c=>`
+    <div class="ld-entry">
+      <div class="ld-row">
+        <div class="left" style="font-weight:400;">${c.link?`<a class="ld-link" href="${escapeHtml(c.link)}" target="_blank" rel="noopener">${escapeHtml(c.name)}</a>`:escapeHtml(c.name)}</div>
+      </div>
+    </div>`).join('') || `<div class="placeholder">List your certifications</div>`;
+
+  const projHtml = d.proj.map(p=>`
+    <div class="ld-entry">
+      <div class="ld-row">
+        <div class="left">${p.link?`<a class="ld-link" href="${escapeHtml(p.link)}" target="_blank" rel="noopener">${escapeHtml(p.name)}</a>`:escapeHtml(p.name)}</div>
+        <div class="right">${escapeHtml(p.dates||'')}</div>
+      </div>
+      ${p.bullets ? `<ul class="ld-bullets">${p.bullets.split('\n').filter(Boolean).map(b=>`<li>${escapeHtml(b)}</li>`).join('')}</ul>` : ''}
+    </div>`).join('') || `<div class="placeholder">List a project you built or contributed to</div>`;
+
+  return `
+    <div class="ld-name">${escapeHtml(d.name)}</div>
+    ${d.jobtitle?`<div class="ld-title">${escapeHtml(d.jobtitle)}</div>`:''}
+    <div class="ld-contact">${contactLine}</div>
+    ${(availLine && !isWorker)?`<div class="ld-contact">${escapeHtml(availLine)}</div>`:''}
+    <div class="ld-rule"></div>
+
+    <div class="ld-section">
+      <div class="ld-h2">${summaryLabel}</div>
+      <div class="ld-body-text">${summaryHtml}</div>
+    </div>
+
+    <div class="ld-section">
+      <div class="ld-h2">Education</div>
+      ${eduHtml}
+    </div>
+
+    <div class="ld-section">
+      <div class="ld-h2">${expLabel}</div>
+      ${expHtml}
+    </div>
+
+    ${(activitiesHtml && !isWorker)?`<div class="ld-section">
+      <div class="ld-h2">Activities &amp; Leadership</div>
+      ${activitiesHtml}
+    </div>`:''}
+
+    <div class="ld-section">
+      <div class="ld-h2">Projects</div>
+      ${projHtml}
+    </div>
+
+    <div class="ld-section">
+      <div class="ld-h2">Skills</div>
+      <div class="ld-skills-line">${skillsHtml}</div>
+    </div>
+
+    <div class="ld-section">
+      <div class="ld-h2">Certifications</div>
+      ${certHtml}
+    </div>
+  `;
+}
+
+document.querySelectorAll('#f-name,#f-jobtitle,#f-email,#f-phone,#f-location,#f-linkedin,#f-github,#f-availfrom,#f-availdur,#f-summary,#f-skills,#f-activities')
+  .forEach(el=>el.addEventListener('input', render));
+
+/* ---- scale the fixed-width CV page down to fit narrow screens ---- */
+function fitPreview(){
+  const panel = document.querySelector('.preview-panel');
+  const frame = document.getElementById('cvFrame');
+  const stage = document.getElementById('cvStage');
+  const cv    = document.getElementById('cv');
+  if(!panel || !frame || !stage || !cv) return;
+
+  const cs = getComputedStyle(panel);
+  const avail = panel.clientWidth
+              - parseFloat(cs.paddingLeft || 0)
+              - parseFloat(cs.paddingRight || 0);
+  if(avail <= 0) return;
+
+  const scale = Math.min(1, avail / 816);
+  if(scale >= 1){
+    stage.style.transform = 'none';
+    frame.style.width = '';
+    frame.style.height = '';
+  }else{
+    const w = Math.round(816 * scale) + 'px';
+    const h = Math.round(cv.offsetHeight * scale) + 'px';
+    const t = 'scale(' + scale + ')';
+    if(stage.style.transform !== t) stage.style.transform = t;
+    if(frame.style.width  !== w) frame.style.width  = w;
+    if(frame.style.height !== h) frame.style.height = h;
+  }
+}
+
+window.addEventListener('resize', fitPreview);
+window.addEventListener('orientationchange', fitPreview);
+if(window.ResizeObserver){
+  let queued = false;
+  const ro = new ResizeObserver(() => {
+    if(queued) return;
+    queued = true;
+    requestAnimationFrame(() => { queued = false; fitPreview(); });
+  });
+  ro.observe(document.getElementById('cv'));
+  ro.observe(document.querySelector('.preview-panel'));
+}
+
+/* ---- Editor / Preview switch (mobile only) ---- */
+document.querySelectorAll('#mobileTabs .mt-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const preview = btn.dataset.view === 'preview';
+    document.body.classList.toggle('view-preview', preview);
+    document.querySelectorAll('#mobileTabs .mt-btn')
+      .forEach(b => b.classList.toggle('active', b === btn));
+    window.scrollTo(0, 0);
+    requestAnimationFrame(fitPreview);
+  });
+});
+
+renderForm();
+renderFontGrid();
+renderColorRow();
+render();
+fitPreview();
+
+</script>
+
+<button type="button" id="bgShuffle" class="no-print" aria-label="Change background" title="Change background">
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 3h5v5"/><path d="M4 20 21 3"/><path d="M21 16v5h-5"/><path d="M15 15l6 6"/><path d="M4 4l5 5"/></svg>
+</button>
+<script>
+/* ---- Interactive background: a random theme + colour mix on every visit, reacts to the mouse / touch ---- */
+(function(){
+  var canvas=document.getElementById('bgfx'); if(!canvas||!canvas.getContext) return;
+  var ctx=canvas.getContext('2d');
+  var reduceMotion=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var W=0,H=0,raf=0,cur=null,pal=null,themeIdx=-1;
+  var mouse={x:0,y:0,sx:0,sy:0,on:false};
+  var TAU=Math.PI*2;
+  var PALETTES=[
+    {a:[18,63,135], b:[11,160,71]},    /* logo navy + green */
+    {a:[18,63,135], b:[62,124,214]},   /* navy + sky blue   */
+    {a:[8,128,56],  b:[18,63,135]},    /* green + navy      */
+    {a:[34,98,184], b:[11,160,71]}     /* blue + green      */
+  ];
+  function rand(a,b){return a+Math.random()*(b-a);}
+  function rgba(c,a){return 'rgba('+(c[0]|0)+','+(c[1]|0)+','+(c[2]|0)+','+a+')';}
+  function mixc(a,b,t){return [a[0]+(b[0]-a[0])*t,a[1]+(b[1]-a[1])*t,a[2]+(b[2]-a[2])*t];}
+  function rrect(x,y,w,h,r){
+    ctx.beginPath();
+    if(ctx.roundRect){ctx.roundRect(x,y,w,h,r);}else{ctx.rect(x,y,w,h);}
+    ctx.fill();
+  }
+
+  /* 1) Constellation: drifting points that link up and follow the cursor */
+  function constellation(){
+    var pts=[];
+    return {
+      init:function(){
+        var n=Math.max(30,Math.min(95,Math.round(W*H/15000))); pts=[];
+        for(var i=0;i<n;i++) pts.push({x:rand(0,W),y:rand(0,H),vx:rand(-.3,.3),vy:rand(-.3,.3),r:rand(1.5,3.2),c:Math.random()<.25});
+      },
+      frame:function(){
+        ctx.clearRect(0,0,W,H);
+        var i,j,p,a,b,dx,dy,d;
+        for(i=0;i<pts.length;i++){
+          p=pts[i];
+          if(mouse.on){
+            dx=mouse.x-p.x; dy=mouse.y-p.y; d=Math.sqrt(dx*dx+dy*dy);
+            if(d<200&&d>1){ var f=(1-d/200)*.06; p.vx+=dx/d*f; p.vy+=dy/d*f; if(d<70){p.vx-=dx/d*.25; p.vy-=dy/d*.25;} }
+          }
+          p.vx*=.985; p.vy*=.985;
+          var sp=Math.sqrt(p.vx*p.vx+p.vy*p.vy);
+          if(sp<.12){p.vx+=rand(-.03,.03); p.vy+=rand(-.03,.03);} else if(sp>1.6){p.vx*=1.6/sp; p.vy*=1.6/sp;}
+          p.x+=p.vx; p.y+=p.vy;
+          if(p.x<-10)p.x=W+10; else if(p.x>W+10)p.x=-10;
+          if(p.y<-10)p.y=H+10; else if(p.y>H+10)p.y=-10;
+        }
+        ctx.lineWidth=1;
+        for(i=0;i<pts.length;i++){
+          a=pts[i];
+          for(j=i+1;j<pts.length;j++){
+            b=pts[j]; dx=a.x-b.x; dy=a.y-b.y;
+            var d2=dx*dx+dy*dy;
+            if(d2<16900){ ctx.strokeStyle=rgba(pal.a,(1-Math.sqrt(d2)/130)*.28); ctx.beginPath(); ctx.moveTo(a.x,a.y); ctx.lineTo(b.x,b.y); ctx.stroke(); }
+          }
+          if(mouse.on){
+            dx=a.x-mouse.x; dy=a.y-mouse.y; d=Math.sqrt(dx*dx+dy*dy);
+            if(d<190){ ctx.strokeStyle=rgba(pal.b,(1-d/190)*.55); ctx.beginPath(); ctx.moveTo(a.x,a.y); ctx.lineTo(mouse.x,mouse.y); ctx.stroke(); }
+          }
+        }
+        for(i=0;i<pts.length;i++){ p=pts[i]; ctx.fillStyle=rgba(p.c?pal.b:pal.a,p.c?.75:.55); ctx.beginPath(); ctx.arc(p.x,p.y,p.r,0,TAU); ctx.fill(); }
+        if(mouse.on){ ctx.fillStyle=rgba(pal.b,.9); ctx.beginPath(); ctx.arc(mouse.x,mouse.y,3.5,0,TAU); ctx.fill(); }
+      },
+      click:function(x,y){
+        for(var i=0;i<pts.length;i++){ var p=pts[i],dx=p.x-x,dy=p.y-y,d=Math.sqrt(dx*dx+dy*dy)||1; if(d<260){var f=(1-d/260)*5; p.vx+=dx/d*f; p.vy+=dy/d*f;} }
+      }
+    };
+  }
+
+  /* 2) Dot wave: a grid of dots that swell and swirl away from the cursor */
+  function dotwave(){
+    var S=28;
+    return {
+      init:function(){},
+      frame:function(t){
+        ctx.clearRect(0,0,W,H);
+        var R=170;
+        for(var y=S/2;y<H+S;y+=S){
+          for(var x=S/2;x<W+S;x+=S){
+            var ox=0,oy=0,f=0;
+            if(mouse.on){
+              var dx=x-mouse.sx,dy=y-mouse.sy,d=Math.sqrt(dx*dx+dy*dy);
+              if(d<R){ f=1-d/R; f=f*f*(3-2*f); var inv=d?1/d:0; ox=dx*inv*f*22; oy=dy*inv*f*22; }
+            }
+            var w=Math.sin((x+y)*.012+t*.0016);
+            var r=1.5+w*.5+f*4.2;
+            ctx.fillStyle=rgba(f>0?mixc(pal.a,pal.b,f):pal.a,.3+f*.6+w*.05);
+            ctx.beginPath(); ctx.arc(x+ox,y+oy,r,0,TAU); ctx.fill();
+          }
+        }
+      }
+    };
+  }
+
+  /* 3) Bubbles: soft bubbles float up; the cursor pushes them, a click makes a shockwave */
+  function bubbles(){
+    var bs=[];
+    function make(initial){ return {x:rand(0,W),y:initial?rand(0,H):H+rand(20,120),r:rand(14,56),vx:0,vy:-rand(.25,.7),ph:rand(0,TAU),c:Math.random()<.35}; }
+    return {
+      init:function(){ var n=Math.max(14,Math.min(34,Math.round(W*H/38000))); bs=[]; for(var i=0;i<n;i++) bs.push(make(true)); },
+      frame:function(t){
+        ctx.clearRect(0,0,W,H);
+        for(var i=0;i<bs.length;i++){
+          var b=bs[i];
+          if(mouse.on){
+            var dx=b.x-mouse.x,dy=b.y-mouse.y,d=Math.sqrt(dx*dx+dy*dy),reach=b.r+110;
+            if(d<reach&&d>0){ var f=(1-d/reach)*.9; b.vx+=dx/d*f; b.vy+=dy/d*f; }
+          }
+          b.vx*=.96; b.vy=b.vy*.97-.45*.03;
+          b.x+=b.vx+Math.sin(t*.001+b.ph)*.35; b.y+=b.vy;
+          if(b.y<-b.r-10){ bs[i]=b=make(false); }
+          if(b.x<-b.r)b.x=W+b.r; else if(b.x>W+b.r)b.x=-b.r;
+          var col=b.c?pal.b:pal.a;
+          var g=ctx.createRadialGradient(b.x-b.r*.3,b.y-b.r*.3,b.r*.1,b.x,b.y,b.r);
+          g.addColorStop(0,rgba(col,.05)); g.addColorStop(1,rgba(col,.2));
+          ctx.fillStyle=g; ctx.beginPath(); ctx.arc(b.x,b.y,b.r,0,TAU); ctx.fill();
+          ctx.strokeStyle=rgba(col,.35); ctx.lineWidth=1.2; ctx.stroke();
+          ctx.fillStyle='rgba(255,255,255,.55)'; ctx.beginPath(); ctx.arc(b.x-b.r*.35,b.y-b.r*.35,b.r*.16,0,TAU); ctx.fill();
+        }
+      },
+      click:function(x,y){
+        for(var i=0;i<bs.length;i++){ var b=bs[i],dx=b.x-x,dy=b.y-y,d=Math.sqrt(dx*dx+dy*dy)||1; if(d<300){var f=(1-d/300)*9; b.vx+=dx/d*f; b.vy+=dy/d*f;} }
+      }
+    };
+  }
+
+  /* 4) Aurora: big soft colour clouds drift around and one glows under the cursor */
+  function aurora(){
+    var bl=[];
+    function glow(x,y,r,c,a){ var g=ctx.createRadialGradient(x,y,0,x,y,r); g.addColorStop(0,rgba(c,a)); g.addColorStop(1,rgba(c,0)); ctx.fillStyle=g; ctx.beginPath(); ctx.arc(x,y,r,0,TAU); ctx.fill(); }
+    return {
+      init:function(){ bl=[]; for(var i=0;i<5;i++) bl.push({x:rand(0,W),y:rand(0,H),r:rand(220,360),ph:rand(0,TAU),sp:rand(.0003,.0007),c:(i%2)?pal.b:pal.a}); },
+      frame:function(t){
+        ctx.clearRect(0,0,W,H);
+        for(var i=0;i<bl.length;i++){ var b=bl[i]; glow(b.x+Math.sin(t*b.sp+b.ph)*120,b.y+Math.cos(t*b.sp*1.3+b.ph)*90,b.r,b.c,.3); }
+        if(mouse.on){ glow(mouse.sx,mouse.sy,320,pal.b,.42); glow(mouse.sx,mouse.sy,160,pal.a,.3); }
+      }
+    };
+  }
+
+  /* 5) Colonnade: columns (like the MUST building) that rise toward the cursor */
+  function colonnade(){
+    var bars=[],BW=26,GAP=16;
+    return {
+      init:function(){ var n=Math.ceil(W/(BW+GAP))+1; bars=[]; for(var i=0;i<n;i++) bars.push({x:i*(BW+GAP),h:0,base:rand(50,130)}); },
+      frame:function(t){
+        ctx.clearRect(0,0,W,H);
+        for(var i=0;i<bars.length;i++){
+          var b=bars[i], cx=b.x+BW/2, target=b.base+Math.sin(t*.0012+b.x*.02)*18;
+          if(mouse.on){
+            var dx=cx-mouse.sx, f=Math.exp(-(dx*dx)/(2*130*130)), my=Math.max(0,Math.min(1,mouse.sy/H));
+            target+=f*(H*.55)*(.35+.65*(1-my));
+          }
+          b.h+=(target-b.h)*.12;
+          var hot=mouse.on&&Math.abs(cx-mouse.sx)<BW;
+          ctx.fillStyle=rgba(hot?pal.b:pal.a,hot?.35:.14);
+          rrect(b.x,H-b.h,BW,b.h+20,6);
+        }
+        ctx.fillStyle=rgba(pal.a,.55); ctx.fillRect(0,H-14,W,14);
+      }
+    };
+  }
+
+  var THEMES=[constellation,dotwave,bubbles,aurora,colonnade];
+  var NAMES=['constellation','dotwave','bubbles','aurora','colonnade'];
+
+  function loop(t){
+    raf=requestAnimationFrame(loop);
+    if(document.hidden) return;
+    if(window.innerWidth<=900&&!document.body.classList.contains('view-preview')) return; /* editor view on phones: the form covers it */
+    mouse.sx+=(mouse.x-mouse.sx)*.18; mouse.sy+=(mouse.y-mouse.sy)*.18;
+    cur.frame(t);
+  }
+  function start(i,p){
+    themeIdx=i;
+    pal=PALETTES[(p===undefined)?Math.floor(Math.random()*PALETTES.length):p];
+    cur=THEMES[i](); cur.init();
+    try{localStorage.setItem('mustawy_bg',String(i));}catch(e){}
+    cancelAnimationFrame(raf);
+    if(reduceMotion){cur.frame(0);} else {raf=requestAnimationFrame(loop);}
+  }
+  function pickDifferent(avoid){
+    var i; do{ i=Math.floor(Math.random()*THEMES.length); }while(i===avoid&&THEMES.length>1);
+    return i;
+  }
+  function resize(){
+    var dpr=Math.min(window.devicePixelRatio||1,2);
+    W=window.innerWidth; H=window.innerHeight;
+    canvas.width=Math.round(W*dpr); canvas.height=Math.round(H*dpr);
+    ctx.setTransform(dpr,0,0,dpr,0,0);
+    if(cur){cur.init(); if(reduceMotion)cur.frame(0);}
+  }
+  var rt=0;
+  window.addEventListener('resize',function(){clearTimeout(rt); rt=setTimeout(resize,150);});
+
+  window.addEventListener('pointermove',function(e){
+    if(!mouse.on){mouse.sx=e.clientX; mouse.sy=e.clientY;}
+    mouse.x=e.clientX; mouse.y=e.clientY; mouse.on=true;
+  },{passive:true});
+  window.addEventListener('pointerdown',function(e){ if(cur&&cur.click) cur.click(e.clientX,e.clientY); },{passive:true});
+  window.addEventListener('pointerup',function(e){ if(e.pointerType==='touch') setTimeout(function(){mouse.on=false;},500); },{passive:true});
+  document.documentElement.addEventListener('mouseleave',function(){mouse.on=false;});
+
+  var last=-1; try{last=parseInt(localStorage.getItem('mustawy_bg'),10);}catch(e){}
+  resize();
+  start(pickDifferent(isNaN(last)?-1:last));
+
+  var btn=document.getElementById('bgShuffle');
+  if(btn) btn.addEventListener('click',function(){ start(pickDifferent(themeIdx)); });
+  window.MUSTAWY_BG={start:start,names:NAMES};
+})();
+</script>
+<div id="toast" class="no-print" role="status" aria-live="polite"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.7 2.7L16 9.5"/></svg><span id="toastText"></span></div>
+<canvas id="confetti" class="no-print" aria-hidden="true"></canvas>
+<script>
+/* ---- UX polish: completeness meter, download celebration ---- */
+(function(){
+  var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var fill=document.getElementById('pgFill'),pctEl=document.getElementById('pgPct'),msg=document.getElementById('pgMsg'),box=document.getElementById('cvProgress');
+  var pdfBtn=document.querySelector('.primary-btn'),wordBtn=document.querySelector('.secondary-download-btn');
+  var shown=0,score=0,tw=0;
+
+  function filled(id){var el=document.getElementById(id);return !!(el&&el.value&&el.value.trim());}
+  function compute(){
+    var st=(typeof state!=='undefined')?state:{education:[],experience:[],projects:[]};
+    var edu=(st.education||[]).some(function(e){return e&&(e.degree||e.institution);});
+    var xp=(st.projects||[]).some(function(p){return p&&p.name;})||(st.experience||[]).some(function(e){return e&&(e.title||e.company);});
+    var items=[
+      [filled('f-name'),15,'Add your full name'],
+      [filled('f-email'),10,'Add your email'],
+      [filled('f-phone'),10,'Add your phone number'],
+      [edu,20,'Add your education'],
+      [filled('f-summary'),15,'Write a short objective'],
+      [filled('f-skills'),15,'List your skills'],
+      [xp,10,'Add a project or experience'],
+      [filled('f-jobtitle'),5,'Add your field of study or target role']
+    ];
+    var total=0,next=null;
+    items.forEach(function(it){ if(it[0]) total+=it[1]; else if(!next) next=it[2]; });
+    score=total;
+    fill.style.width=total+'%';
+    msg.textContent=next?('Next: '+next.charAt(0).toLowerCase()+next.slice(1)):'All set — download your CV!';
+    if(!next) msg.textContent='All set — download your CV!';
+    if(next&&total===0) msg.textContent='Start with your full name';
+    box.classList.toggle('done',!next);
+    if(pdfBtn) pdfBtn.classList.toggle('ready',total>=80);
+    tween(total);
+  }
+  function tween(to){
+    cancelAnimationFrame(tw);
+    if(reduce){shown=to;pctEl.textContent=to+'%';return;}
+    var from=shown,t0=performance.now();
+    (function step(t){
+      var k=Math.min(1,(t-t0)/450); shown=Math.round(from+(to-from)*k);
+      pctEl.textContent=shown+'%';
+      if(k<1) tw=requestAnimationFrame(step);
+    })(t0);
+  }
+  var q=0; function schedule(){clearTimeout(q); q=setTimeout(compute,0);}
+  ['input','change','click'].forEach(function(ev){document.addEventListener(ev,schedule,true);});
+  schedule();
+
+  /* toast */
+  var toastEl=document.getElementById('toast'),toastText=document.getElementById('toastText'),tt=0;
+  function toast(text){toastText.textContent=text; toastEl.classList.add('show'); clearTimeout(tt); tt=setTimeout(function(){toastEl.classList.remove('show');},3600);}
+
+  /* confetti burst in the logo colours */
+  var cv=document.getElementById('confetti'),cx=cv.getContext('2d');
+  function confetti(ox,oy){
+    var dpr=Math.min(window.devicePixelRatio||1,2),W=window.innerWidth,H=window.innerHeight;
+    cv.width=W*dpr; cv.height=H*dpr; cx.setTransform(dpr,0,0,dpr,0,0);
+    var cols=['#123F87','#0BA047','#3E7CD6','#7FD6A0','#FFFFFF','#0B2A5C'],ps=[],i;
+    for(i=0;i<110;i++){
+      var a=-Math.PI/2+(Math.random()-.5)*Math.PI*1.1,sp=6+Math.random()*9;
+      ps.push({x:ox,y:oy,vx:Math.cos(a)*sp,vy:Math.sin(a)*sp,w:5+Math.random()*6,h:3+Math.random()*5,r:Math.random()*6.28,vr:(Math.random()-.5)*.4,c:cols[i%cols.length]});
+    }
+    var t0=performance.now();
+    (function frame(t){
+      var el=t-t0; cx.clearRect(0,0,W,H);
+      for(var j=0;j<ps.length;j++){
+        var p=ps[j]; p.vy+=.28; p.vx*=.992; p.x+=p.vx; p.y+=p.vy; p.r+=p.vr;
+        cx.save(); cx.globalAlpha=Math.max(0,1-el/2300); cx.translate(p.x,p.y); cx.rotate(p.r);
+        cx.fillStyle=p.c; cx.fillRect(-p.w/2,-p.h/2,p.w,p.h); cx.restore();
+      }
+      if(el<2300) requestAnimationFrame(frame); else cx.clearRect(0,0,W,H);
+    })(t0);
+  }
+  function celebrate(btn){
+    if(score<50){ toast('Download started — add more details to make your CV stronger'); return; }
+    toast('Your CV is ready — good luck with your applications!');
+    if(!reduce){ var r=btn.getBoundingClientRect(); confetti(r.left+r.width/2,r.top); }
+  }
+  if(pdfBtn)  pdfBtn.addEventListener('click',function(){ setTimeout(function(){celebrate(pdfBtn);},150); });
+  if(wordBtn) wordBtn.addEventListener('click',function(){ setTimeout(function(){celebrate(wordBtn);},150); });
+})();
+</script>
+<script>
+/* ---- Drag to resize the form panel (double-click resets; arrow keys also work) ---- */
+(function(){
+  var app=document.querySelector('.app'),panel=document.querySelector('.form-panel');
+  if(!app||!panel) return;
+  var MIN=320,KEY='mustawy_formw';
+  var h=document.createElement('div');
+  h.className='panel-resizer no-print';
+  h.setAttribute('role','separator'); h.setAttribute('aria-orientation','vertical');
+  h.setAttribute('tabindex','0'); h.setAttribute('aria-label','Resize the form panel');
+  h.setAttribute('title','Drag to resize · double-click to reset');
+  h.innerHTML='<span class="grip"></span>';
+  panel.appendChild(h);
+
+  function maxW(){return Math.max(MIN+40,Math.min(760,Math.round(window.innerWidth*.62)));}
+  function clamp(w){return Math.max(MIN,Math.min(maxW(),w));}
+  function setW(w,save){
+    w=clamp(Math.round(w));
+    app.style.setProperty('--form-w',w+'px');
+    h.setAttribute('aria-valuemin',MIN); h.setAttribute('aria-valuemax',maxW()); h.setAttribute('aria-valuenow',w);
+    if(save){try{localStorage.setItem(KEY,String(w));}catch(e){}}
+    return w;
+  }
+  function reset(){
+    app.style.removeProperty('--form-w');
+    try{localStorage.removeItem(KEY);}catch(e){}
+  }
+  var customised=false;
+  try{var saved=parseInt(localStorage.getItem(KEY),10); if(saved){setW(saved,false);customised=true;}}catch(e){}
+  if(customised) h.classList.remove('nudge'); else h.classList.add('nudge');
+
+  var dragging=false;
+  h.addEventListener('pointerdown',function(e){
+    if(e.button!==undefined&&e.button!==0) return;
+    dragging=true; customised=true; h.classList.remove('nudge'); h.classList.add('active');
+    document.body.classList.add('resizing');
+    try{h.setPointerCapture(e.pointerId);}catch(err){}
+    e.preventDefault();
+  });
+  h.addEventListener('pointermove',function(e){
+    if(!dragging) return;
+    setW(e.clientX-app.getBoundingClientRect().left,false);
+  });
+  function stop(e){
+    if(!dragging) return;
+    dragging=false; h.classList.remove('active'); document.body.classList.remove('resizing');
+    try{h.releasePointerCapture(e.pointerId);}catch(err){}
+    setW(panel.getBoundingClientRect().width,true);
+  }
+  h.addEventListener('pointerup',stop);
+  h.addEventListener('pointercancel',stop);
+  h.addEventListener('dblclick',function(){ reset(); customised=false; h.classList.remove('nudge'); h.removeAttribute('aria-valuenow'); });
+  h.addEventListener('keydown',function(e){
+    var step=e.shiftKey?60:20,cur=panel.getBoundingClientRect().width;
+    if(e.key==='ArrowLeft'){setW(cur-step,true);e.preventDefault();}
+    else if(e.key==='ArrowRight'){setW(cur+step,true);e.preventDefault();}
+    else if(e.key==='Home'){setW(MIN,true);e.preventDefault();}
+    else if(e.key==='End'){setW(maxW(),true);e.preventDefault();}
+    else if(e.key==='Escape'||e.key==='Enter'){reset();customised=false;e.preventDefault();}
+  });
+  window.addEventListener('resize',function(){ if(customised&&app.style.getPropertyValue('--form-w')) setW(panel.getBoundingClientRect().width,false); });
+})();
+</script>
+<script>
+/* ===== BUILD PAGE ADDITIONS: auto-save, smart assistant, completion checklist ===== */
+(function(){
+  'use strict';
+
+  var KEY = 'mustawy_cv_v1';
+  var FIELDS = ['f-name','f-jobtitle','f-email','f-phone','f-location','f-linkedin','f-github','f-availfrom','f-availdur','f-summary','f-skills','f-activities'];
+  var ALLOWED = {
+    education:    ['degree','institution','dates','gpa','gradyear','coursework','details'],
+    experience:   ['title','company','dates','bullets'],
+    certificates: ['name','link'],
+    projects:     ['name','link','dates','bullets']
+  };
+  var restoring = false, dirty = false;
+
+  function $(id){ return document.getElementById(id); }
+  function has(o,k){ return Object.prototype.hasOwnProperty.call(o,k); }
+  function val(id){ var el=$(id); return el ? el.value.trim() : ''; }
+  function words(t){ var m=String(t).trim().match(/\S+/g); return m ? m.length : 0; }
+  function lines(id){ return val(id).split('\n').map(function(s){return s.trim();}).filter(Boolean); }
+  function pl(n,one,many){ return n+' '+(n===1?one:many); }
+  function refresh(){ var n=$('f-name'); if(n) n.dispatchEvent(new Event('input',{bubbles:true})); }
+
+  function focusTarget(sel){
+    var el = sel ? document.querySelector(sel) : null;
+    if(!el) return;
+    el.scrollIntoView({behavior:'smooth',block:'center'});
+    try{ el.focus({preventScroll:true}); }catch(e){}
+  }
+
+  /* ---------------- 1. Auto-save ---------------- */
+  var statusEl=$('saveStatus'), sv=0;
+  function setStatus(txt,ok){ if(!statusEl) return; statusEl.textContent=txt; statusEl.className = ok ? 'saved' : ''; }
+
+  function save(){
+    if(restoring || !dirty) return;
+    try{
+      var fields={};
+      FIELDS.forEach(function(id){ var el=$(id); if(el) fields[id]=el.value; });
+      localStorage.setItem(KEY, JSON.stringify({
+        v:1, t:Date.now(), fields:fields,
+        state:{ education:state.education, experience:state.experience, certificates:state.certificates, projects:state.projects },
+        font:cvFont
+      }));
+      setStatus('Saved '+new Date().toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'}), true);
+    }catch(e){
+      setStatus('Auto-save is unavailable in this browser', false);
+    }
+  }
+  function schedSave(){
+    if(restoring) return;
+    dirty = true;
+    setStatus('Saving…', false);
+    clearTimeout(sv);
+    sv = setTimeout(save, 500);
+  }
+
+  function cleanList(arr,keys){
+    if(!Array.isArray(arr) || !arr.length) return [{}];
+    return arr.slice(0,30).map(function(o){
+      var r={};
+      if(o && typeof o==='object'){
+        keys.forEach(function(k){ if(typeof o[k]==='string') r[k]=o[k].slice(0,5000); });
+      }
+      return r;
+    });
+  }
+  function hasContent(d){
+    var f=d.fields||{}, any=false;
+    Object.keys(f).forEach(function(k){ if(typeof f[k]==='string' && f[k].trim()) any=true; });
+    var s=d.state||{};
+    Object.keys(s).forEach(function(k){
+      if(Array.isArray(s[k])) s[k].forEach(function(o){
+        if(o && typeof o==='object') Object.keys(o).forEach(function(x){ if(typeof o[x]==='string' && o[x].trim()) any=true; });
+      });
+    });
+    return any;
+  }
+  function restore(){
+    var raw, d;
+    try{ raw = localStorage.getItem(KEY); }catch(e){ return false; }
+    if(!raw) return false;
+    try{ d = JSON.parse(raw); }catch(e){ return false; }
+    if(!d || typeof d!=='object') return false;
+    restoring = true;
+    try{
+      var f=d.fields||{};
+      FIELDS.forEach(function(id){ var el=$(id); if(el && typeof f[id]==='string') el.value=f[id].slice(0,10000); });
+      var s=d.state||{};
+      Object.keys(ALLOWED).forEach(function(k){ state[k]=cleanList(s[k],ALLOWED[k]); });
+      if(typeof d.font==='string' && has(FONT_PRESETS,d.font)) cvFont=d.font;
+      renderForm(); renderFontGrid(); render(); refresh();
+    } finally { restoring = false; }
+    return hasContent(d);
+  }
+
+  ['input','change','click'].forEach(function(ev){
+    document.addEventListener(ev,function(e){
+      if(ev==='click' && !(e.target && e.target.closest && e.target.closest('button'))) return;
+      schedSave(); schedAssist();
+    },true);
+  });
+  window.addEventListener('pagehide',save);
+  document.addEventListener('visibilitychange',function(){ if(document.visibilityState==='hidden') save(); });
+
+  var clearBtn=$('clearSaved');
+  if(clearBtn) clearBtn.addEventListener('click',function(){
+    if(!window.confirm('Clear everything you have entered and start over? This cannot be undone.')) return;
+    clearTimeout(sv);
+    restoring = true;
+    try{ localStorage.removeItem(KEY); }catch(e){}
+    try{
+      FIELDS.forEach(function(id){ var el=$(id); if(el) el.value=''; });
+      state.education=[{}]; state.experience=[{}]; state.certificates=[{}]; state.projects=[{}];
+      cvFont='classic';
+      renderForm(); renderFontGrid(); render(); refresh();
+    } finally { restoring=false; }
+    dirty = false;
+    setStatus('Saved data cleared', false);
+    schedAssist();
+  });
+
+  /* ---------------- 2. Smart CV Assistant ---------------- */
+  var VERBS = ('achieved analyzed assisted automated built collaborated compiled completed conducted contributed coordinated created ' +
+    'delivered designed developed drove established executed generated grew implemented improved increased initiated launched led made ' +
+    'maintained managed mentored optimized organized participated planned prepared presented produced ran reduced researched resolved ' +
+    'sold spoke streamlined supported taught tested trained volunteered won wrote').split(' ');
+  var WEAK = /\b(responsible for|duties included|worked on|helped with|in charge of|tasked with)\b/i;
+  var BUZZ = /(hard[- ]?working|team player|go[- ]getter|detail[- ]oriented|self[- ]motivated|results[- ]driven|passionate)/i;
+  var EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+  var acts = [], lastSig = '';
+
+  function analyze(){
+    var out=[];
+    function add(type,msg,target,action){ out.push({type:type,msg:msg,target:target||'',action:action||null}); }
+
+    var name=val('f-name'), role=val('f-jobtitle'), email=val('f-email'), phone=val('f-phone');
+    var linkedin=val('f-linkedin'), summary=val('f-summary');
+    var skills=lines('f-skills'), activities=lines('f-activities');
+    var edu  = state.education.filter(function(e){return e && (e.degree||e.institution);});
+    var exp  = state.experience.filter(function(e){return e && (e.title||e.company);});
+    var proj = state.projects.filter(function(p){return p && p.name;});
+
+    /* contact */
+    if(!name) add('warn','Add your full name. It is the first thing recruiters look for.','#f-name');
+    if(!email) add('warn','Add an email address so recruiters can reach you.','#f-email');
+    else if(!EMAIL_RE.test(email)) add('warn','Your email address looks incomplete. Check it for typos.','#f-email');
+    if(!phone) add('warn','Add a phone number. Many recruiters call first.','#f-phone');
+    else if(phone.replace(/\D/g,'').length<8) add('warn','Your phone number looks too short. Include the full number with country code.','#f-phone');
+    if(!role) add('tip','Add your field of study or target role under your name, e.g. “Marketing Student, seeking Marketing Intern role”.','#f-jobtitle');
+    if(!linkedin) add('tip','Add your LinkedIn profile. Many internship recruiters check it.','#f-linkedin');
+
+    /* objective */
+    if(!summary){
+      add('warn','Write a short objective: the role you want and what you bring, in 2–3 sentences.','#f-summary');
+    }else{
+      var wc=words(summary);
+      if(wc<25) add('tip','Your objective is short ('+wc+' words). Aim for 30–60 words: target role, key skills and what you want to learn.','#f-summary');
+      else if(wc>80) add('tip','Your objective is long ('+wc+' words). Keep it to 2–3 sentences so it actually gets read.','#f-summary');
+      if(/\b(I|my|me)\b/.test(summary) || /\bI['’]m\b/.test(summary)) add('tip','Avoid “I” and “my” in your objective. Start with who you are, e.g. “Computer Science student seeking…”.','#f-summary');
+      if(BUZZ.test(summary)) add('tip','Replace buzzwords like “hardworking” or “team player” with proof: a skill, a project or a result.','#f-summary');
+    }
+
+    /* education */
+    if(!edu.length) add('warn','Add your education. It is the most important section when you are a student.','#education-list input');
+    else if(edu.some(function(e){ return !(e.dates||e.gradyear); })) add('tip','Add dates or an expected graduation year to your education.','#education-list input');
+
+    /* experience and projects */
+    if(!exp.length && !proj.length){
+      add('warn','Add at least one project or experience. Class projects, volunteering and club work all count.','#projects-list input');
+    }else if(!proj.length){
+      add('tip','Projects show initiative. Add one, even if it is from a class or a personal build.','#projects-list input');
+    }
+    var all=exp.concat(proj), bl=[], noBullets=0, tooMany=0;
+    all.forEach(function(e){
+      var b=(e.bullets||'').split('\n').map(function(s){return s.trim();}).filter(Boolean);
+      if(!b.length) noBullets++; else { bl=bl.concat(b); if(b.length>6) tooMany++; }
+    });
+    if(noBullets){
+      var tgt = proj.some(function(p){return !(p.bullets||'').trim();}) ? '#projects-list textarea' : '#experience-list textarea';
+      add('tip',pl(noBullets,'entry has','entries have')+' no bullet points. Add 2–4 short bullets on what you did and what came of it.',tgt);
+    }
+    var weak=0,noVerb=0,withNum=0,longB=0;
+    bl.forEach(function(l){
+      if(WEAK.test(l)) weak++;
+      var first=(l.replace(/^[^A-Za-z]+/,'').split(/\s+/)[0]||'').toLowerCase().replace(/[^a-z]/g,'');
+      if(first && VERBS.indexOf(first)<0 && !/ed$/.test(first)) noVerb++;
+      if(/\d/.test(l)) withNum++;
+      if(words(l)>30) longB++;
+    });
+    if(weak) add('tip','Swap phrases like “responsible for” or “worked on” for strong verbs such as Led, Built or Designed.');
+    if(noVerb) add('tip',pl(noVerb,'bullet does not','bullets do not')+' start with an action verb. Try Led, Built, Organized, Analyzed or Designed.');
+    if(bl.length>=2 && !withNum) add('tip','Add numbers where you can (team size, percentages, users, hours). For example: “Increased sign-ups by 20%”.');
+    if(longB) add('tip',pl(longB,'bullet is','bullets are')+' longer than 30 words. Shorten each to one or two lines.');
+    if(tooMany) add('tip','Keep each entry to about 3–5 bullets. Recruiters skim.');
+
+    /* skills and activities */
+    if(!skills.length) add('warn','List your skills, one per line. Recruiters and ATS software scan for them.','#f-skills');
+    else if(skills.length<5) add('tip','List at least 5 relevant skills (you have '+skills.length+').','#f-skills');
+    else if(skills.length>18) add('tip','You list '+skills.length+' skills. Keep the 10–15 most relevant to the role.','#f-skills');
+    if(skills.some(function(s){return s.length>40;})) add('tip','Keep each skill short, one per line (for example “Excel” rather than a full sentence).','#f-skills');
+    if($('f-activities') && !activities.length) add('tip','Add clubs, volunteering or leadership roles. They matter a lot when you have little work experience.','#f-activities');
+
+    /* length */
+    var cvEl=$('cv'), h=cvEl ? cvEl.offsetHeight : 0;
+    if(h>1060) add('tip','Your CV will likely run past one page. For internships, one page is ideal. Trim older or less relevant bullets.');
+
+    var warns=out.filter(function(i){return i.type==='warn';}), tips=out.filter(function(i){return i.type==='tip';});
+    var res=warns.concat(tips);
+    if(!warns.length && !tips.length) res.push({type:'good',msg:'Looking good! No issues found. Download your CV when you are ready.',target:'',action:null});
+    else if(!warns.length) res.push({type:'good',msg:'No critical gaps. The tips above would make your CV stronger.',target:'',action:null});
+    return res;
+  }
+
+  function renderAssist(){
+    var list=$('asList'), badge=$('asCount'); if(!list||!badge) return;
+    var items=analyze();
+    var sig=JSON.stringify(items.map(function(i){return [i.type,i.msg,i.target];}));
+    var n=items.filter(function(i){return i.type!=='good';}).length;
+    badge.textContent = n ? String(n) : '✓';
+    badge.className = 'as-count'+(n?'':' ok');
+    badge.setAttribute('aria-label', n ? n+' suggestions' : 'No suggestions');
+    acts=items;
+    if(sig===lastSig) return;
+    lastSig=sig;
+    list.innerHTML = items.map(function(it,i){
+      return '<li class="as-item '+it.type+'"'+(it.target?' data-target="'+it.target+'" tabindex="0"':'')+'>'+
+        '<span class="dot"></span><div>'+escapeHtml(it.msg)+
+        (it.action?'<br><button type="button" class="as-act" data-act="'+i+'">'+escapeHtml(it.action.label)+'</button>':'')+
+        '</div></li>';
+    }).join('');
+  }
+  var asList=$('asList');
+  if(asList){
+    asList.addEventListener('click',function(e){
+      var a=e.target.closest('.as-act');
+      if(a){ var it=acts[parseInt(a.getAttribute('data-act'),10)]; if(it && it.action) it.action.fn(); return; }
+      var li=e.target.closest('.as-item[data-target]');
+      if(li) focusTarget(li.getAttribute('data-target'));
+    });
+    asList.addEventListener('keydown',function(e){
+      if(e.key!=='Enter') return;
+      var li=e.target.closest && e.target.closest('.as-item[data-target]');
+      if(li && e.target===li) focusTarget(li.getAttribute('data-target'));
+    });
+  }
+
+  /* ---------------- 3. Completion checklist (companion to the completeness meter) ---------------- */
+  var CHECK = [
+    ['Full name',15,'#f-name',function(){return !!val('f-name');}],
+    ['Email',10,'#f-email',function(){return !!val('f-email');}],
+    ['Phone number',10,'#f-phone',function(){return !!val('f-phone');}],
+    ['Education',20,'#education-list input',function(){return state.education.some(function(e){return e&&(e.degree||e.institution);});}],
+    ['Objective',15,'#f-summary',function(){return !!val('f-summary');}],
+    ['Skills',15,'#f-skills',function(){return !!val('f-skills');}],
+    ['A project or experience',10,'#projects-list input',function(){
+      return state.projects.some(function(p){return p&&p.name;}) || state.experience.some(function(e){return e&&(e.title||e.company);});
+    }],
+    ['Field of study or target role',5,'#f-jobtitle',function(){return !!val('f-jobtitle');}]
+  ];
+  var lastCl='';
+  function renderChecklist(){
+    var ul=$('clList'), sum=$('clSummary'); if(!ul||!sum) return;
+    var left=0, html='', sig='';
+    CHECK.forEach(function(c,i){
+      var done=c[3](); if(!done) left++;
+      sig+=done?'1':'0';
+      html+='<li><button type="button" class="cl-item'+(done?' done':'')+'" data-i="'+i+'"><span class="mk" aria-hidden="true">'+(done?'✓':'')+'</span>'+
+        '<span>'+c[0]+'</span>'+(done?'':'<span class="pts">+'+c[1]+'%</span>')+'</button></li>';
+    });
+    sum.textContent = left ? 'What’s missing? ('+left+' left)' : 'Everything is filled in';
+    if(sig===lastCl) return;
+    lastCl=sig; ul.innerHTML=html;
+  }
+  var clList=$('clList');
+  if(clList) clList.addEventListener('click',function(e){
+    var b=e.target.closest('.cl-item'); if(!b) return;
+    var c=CHECK[parseInt(b.getAttribute('data-i'),10)]; if(c) focusTarget(c[2]);
+  });
+
+  var at=0;
+  function schedAssist(){ clearTimeout(at); at=setTimeout(function(){ renderAssist(); renderChecklist(); },350); }
+
+  /* ---------------- start up ---------------- */
+  function toast(t){
+    var el=$('toast'), tx=$('toastText'); if(!el||!tx) return;
+    tx.textContent=t; el.classList.add('show');
+    setTimeout(function(){ el.classList.remove('show'); },3600);
+  }
+  var restored = restore();
+  renderAssist(); renderChecklist();
+  if(restored){ setStatus('Restored your saved CV', true); toast('Welcome back! Your saved CV has been restored.'); }
+})();
+</script>
+</body>
+</html>
